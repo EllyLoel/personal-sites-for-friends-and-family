@@ -9,17 +9,48 @@ collections_config:
     name: Pages
     icon: wysiwyg
     disable_url: false
+    description: ''
+    _enabled_editors:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
-  blog:
-    path: content/blog
-    name: Blog
+  posts:
+    path: content/posts
+    glob:
+      - '**/*.{svg,webp,png,jpg,jpeg}'
+    name: Posts
+    singular_name:
     icon: event_available
     disable_url: false
+    description: ''
+    preview:
+    _enabled_editors:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+    schemas:
+      post:
+        path: .cloudcannon/schemas/post.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        name:
+        icon: notes
+        preview:
+        _editables:
+        _enabled_editors:
+        _inputs:
+        _select_data:
+        _structures:
+        create:
+          path: '[relative_base_path]/{title|slugify}/{title|slugify}.md'
+          extra_data:
+          publish_to:
+          _inputs:
+          _select_data:
+          _structures:
+        new_preview_url:
 timezone: Australia/Melbourne
 markdown:
   engine: commonmark
