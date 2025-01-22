@@ -29,7 +29,7 @@ collections_config:
     disable_add_folder: false
     disable_file_actions: false
     schemas:
-      post:
+      default:
         path: .cloudcannon/schemas/post.md
         reorder_inputs: true
         hide_extra_inputs: false
