@@ -15,8 +15,6 @@ collections_config:
     disable_add_folder: false
     disable_file_actions: false
   posts:
-    create:
-      path: '[relative_base_path]/{title|slugify}/{title|slugify}.md'
     path: content/posts
     glob:
       - '**/*.{svg,webp,png,jpg,jpeg,md}'
@@ -33,19 +31,16 @@ collections_config:
     schemas:
       default:
         path: .cloudcannon/schemas/post.md
+        create:
+          path: '[relative_base_path]/{title|slugify}/{title|slugify}.md'
         reorder_inputs: true
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
-        name:
         icon: notes
-        preview:
-        _editables:
-        _enabled_editors:
         _inputs:
-        _select_data:
-        _structures:
-        new_preview_url:
+          title:
+            comment: The title of the post
 timezone: Australia/Melbourne
 markdown:
   engine: commonmark
