@@ -63,11 +63,13 @@ export default async function (eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "Blog Title",
-			subtitle: "This is a longer description about your blog.",
-			base: "https://example.com/",
+			title: "Nervous Ghost",
+			subtitle: "Hey there! My name is Brodie, I am a queer, non-binary and neurodivergent artist operating in Naarm (Melbourne).",
+			base: "https://nervousghost.com/",
 			author: {
-				name: "Your Name",
+    		name: "Brodie Cato",
+    		email: "hello@nervousghost.com",
+    		url: "https://nervousghost.com/about/",
 			},
 		},
 	});
