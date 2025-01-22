@@ -22,7 +22,9 @@ But Fribble didn’t give up trying to reunite with Chloe: he hunted night and d
 ## Photos
 
 ![](./Fribble1.jpg)
+
 Fribble standing up on a table.
 
 ![](./Fribble4.jpg)
+
 Fribble is lying down on the table now—time for a nap.

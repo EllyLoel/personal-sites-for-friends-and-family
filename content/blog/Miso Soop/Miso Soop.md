@@ -12,4 +12,5 @@ Miso Soop, twin siblings of Stripes, the first Jellycat ever owned by Chloe when
 Miso Soop was Chloe’s second Jellycat purchase as an adult, and was bought second hand.
 
 ![](./MisoSoop2.jpg)
+
 Miso Soop the lovely grey and brown striped cat sitting politely on the table.
