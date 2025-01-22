@@ -1,6 +1,7 @@
 ---
-title:
-description:
+title: Kumo
+description: Kumo the leopard
 date: 2025-01-23
-tags:
+tags: Leopard
 ---
+Kumo (Japanese for cloudy) is great at camouflage. She has a thick, fluffy tail just like a real leopard. She likes to hide in Chloe’s bed and is great at cuddles. She has an excellent stimmy tail.
