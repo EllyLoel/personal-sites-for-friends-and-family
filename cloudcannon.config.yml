@@ -40,7 +40,6 @@ collections_config:
         icon: notes
         _inputs:
           title:
-            comment: The title of the post
 timezone: Australia/Melbourne
 markdown:
   engine: commonmark
