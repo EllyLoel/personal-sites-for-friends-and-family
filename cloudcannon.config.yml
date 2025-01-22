@@ -17,7 +17,7 @@ collections_config:
   posts:
     path: content/posts
     glob:
-      - '**/*.{svg,webp,png,jpg,jpeg}'
+      - '**/*.{svg,webp,png,jpg,jpeg,md}'
     name: Posts
     singular_name:
     icon: event_available
