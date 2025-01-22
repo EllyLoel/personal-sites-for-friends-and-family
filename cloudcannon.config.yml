@@ -15,6 +15,8 @@ collections_config:
     disable_add_folder: false
     disable_file_actions: false
   posts:
+    create:
+      path: '[relative_base_path]/{title|slugify}/{title|slugify}.md'
     path: content/posts
     glob:
       - '**/*.{svg,webp,png,jpg,jpeg,md}'
@@ -43,13 +45,6 @@ collections_config:
         _inputs:
         _select_data:
         _structures:
-        create:
-          path: '[relative_base_path]/{title|slugify}/{title|slugify}.md'
-          extra_data:
-          publish_to:
-          _inputs:
-          _select_data:
-          _structures:
         new_preview_url:
 timezone: Australia/Melbourne
 markdown:
