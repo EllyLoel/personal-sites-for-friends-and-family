@@ -14,11 +14,5 @@ Boo was bought by Chloe to remind her of Chloe’s Grandma. Boo has been so well
 ![](./Boo1.jpg)
 Boo laying on a table.
 
-![](./Boo2.jpg)
-Boo is still laying on the table.
-
 ![](./Boo3.jpg)
-Boo is now sitting up on the table.
-
-![](./Boo4.jpg)
-More Boo sitting cutely.
+Boo is now sitting cutely on the table.
