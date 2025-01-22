@@ -1,6 +1,7 @@
 _schema: _schema
 paths:
-  uploads: uploads
+  uploads:
+  uploads_use_relative_path: true
   static: ''
 collections_config:
   pages:

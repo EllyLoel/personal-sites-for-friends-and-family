@@ -67,6 +67,15 @@
 	navigation: auto;
 }
 
+:not(:focus-visible) {
+	outline-offset: 0;
+}
+:focus-visible {
+	outline: 0.125em solid;
+	outline-offset: 0.125em;
+	transition: outline-offset 100ms ease-out;
+}
+
 html {
 	color-scheme: light dark;
 	background-color: var(--background-color);
@@ -93,13 +102,20 @@ body {
 img {
 	max-width: 100%;
 }
-img[width][height] {
+img:where([width][height]) {
 	height: auto;
 }
 img[src$=".svg"] {
 	width: 100%;
 	height: auto;
 	max-width: none;
+}
+img,
+picture {
+	display: block;
+}
+picture {
+	width: fit-content;
 }
 
 p:last-child {
@@ -173,7 +189,7 @@ header {
 	padding: 1em;
 }
 .home-link {
-	font-size: 1em; /* 16px /16 */
+	font-size: 1em;
 	font-weight: 700;
 	margin-right: 2em;
 	display: flex;
@@ -184,8 +200,8 @@ header {
 	text-decoration: none;
 }
 .home-link img {
-	max-block-size: 2em;
-	inline-size: auto;
+	max-height: 2em;
+	width: auto;
 }
 
 /* Nav */
@@ -215,43 +231,90 @@ footer a {
 .postlist {
 	list-style: none;
 	padding: 0;
-	padding-left: 1.5rem;
 }
 .postlist-item {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
+	display: grid;
+	grid-template-areas:
+		"link image"
+		"date image";
+	grid-template-columns: auto 1fr;
+	grid-template-rows: auto 1fr;
 	counter-increment: start-from -1;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
+	font-size: 1.5em;
+	position: relative;
+	width: fit-content;
 }
-.postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
+.postlist-item:is(:focus-within, :hover)::before {
+	content: "";
+	z-index: -1;
+	position: absolute;
+	top: -0.5em;
+	right: -0.5em;
+	bottom: -0.5em;
+	left: -0.5em;
+	background: linear-gradient(to right, light-dark(var(--color-1), var(--color-13)), transparent 50%);
 }
-.postlist-date,
-.postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--gray-14);
+.postlist-item:not(:focus-within) {
+	outline-offset: 0;
+}
+.postlist-item:focus-within {
+	outline: 0.25em solid var(--color-bright);
+	outline-offset: 0.25em;
+	transition: outline-offset 100ms ease-out;
+}
+.postlist-item:focus-within :focus-visible {
+	outline: none; /* usually you want `outline-color: transparent;` so the outlines get added back for forced colors users but in this case we've added another outline already so we don't need to.  */
+}
+.postlist-item > :is(img, picture) {
+	grid-area: image;
+	margin-left: 1rem;
+	--lh: 3;
+	max-height: calc(var(--lh) * 1.5em);
+	max-height: calc(var(--lh) * 1lh);
+}
+.postlist-image {
+	height: 100%;
+	width: auto;
 }
 .postlist-date {
+	font-size: 0.75em;
+}
+.postlist-date {
+	grid-area: date;
 	word-spacing: -0.5px;
 }
 .postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
+	grid-area: link;
 	font-weight: 700;
-	flex-basis: calc(100% - 1.5rem);
-	padding-left: 0.25em;
-	padding-right: 0.5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
 	text-decoration-thickness: 1px;
 }
+.postlist-link::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
 .postlist-item-active .postlist-link {
 	font-weight: bold;
+}
+@media (max-width: 28em) {
+	.postlist-item {
+		grid-template-areas:
+			"link"
+			"date"
+			"image";
+		grid-template-columns: auto;
+		grid-template-rows: auto auto auto;
+	}
+	.postlist-item > :is(img, picture) {
+		margin-left: 0;
+		margin-top: 1rem;
+	}
 }
 
 /* Tags */
