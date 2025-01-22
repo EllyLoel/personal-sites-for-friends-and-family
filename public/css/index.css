@@ -14,7 +14,7 @@
 	--hue-yellow: 100;
 	--hue-orange: 75;
 
-	--color-hue: var(--hue-green);
+	--color-hue: 128.92;
 	--color-0: oklch(99% 0.03 var(--color-hue, 0));
 	--color-1: oklch(95% 0.06 var(--color-hue, 0));
 	--color-2: oklch(88% 0.12 var(--color-hue, 0));
