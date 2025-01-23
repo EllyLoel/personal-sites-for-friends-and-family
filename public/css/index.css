@@ -258,11 +258,11 @@ footer a {
 	left: -0.5em;
 	background: linear-gradient(to bottom, light-dark(var(--color-1), var(--color-13)), transparent 50%);
 }
-.postlist-item:is(:hover)::before {
+.postlist-item:hover::before {
 	border-radius: 0.5em;
 }
 @supports not selector(:has(a, b)) {
-	.postlist-item:is(:focus-within)::before {
+	.postlist-item:focus-within::before {
 		border-radius: 1.5em;
 	}
 }
@@ -310,11 +310,27 @@ footer a {
 .postlist-item > :is(img, picture, .postlist-image-placeholder) {
 	grid-area: image;
 	margin-top: 0.5em;
+}
+.postlist-item :is(img, .postlist-image-placeholder) {
 	border-radius: 0.25em;
-	overflow: clip;
 }
-.postlist-image {
+.postlist-item > picture {
+	position: relative;
 }
+.postlist-item > picture::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	translate: 0.5em 0.5em;
+	border-radius: 0.25em;
+	z-index: -1;
+	transition: translate 300ms ease-out;
+}
+.postlist-item > picture::after,
 .postlist-image-placeholder {
 	--s: 1em; /* control the size*/
 	--c1: var(--color-1);
@@ -328,6 +344,13 @@ footer a {
 		radial-gradient(var(--s) at 0    100%,var(--_g)),
 		radial-gradient(var(--s) at 100% 100%,var(--_g)) var(--c1);
 	background-size: var(--s) var(--s);
+}
+.postlist-link:focus-visible ~ picture::after {
+	translate: 0 0;
+	transition: translate 150ms ease-out;
+}
+.postlist-item:hover:not(:focus-within) picture::after {
+	translate: 0.25em 0.25em;
 }
 
 /* Tags */
