@@ -12,6 +12,13 @@
 			<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
 			{% if post.data.image and post.data.imageAlt -%}
 				<img src="{{ post.url }}{{ post.data.image }}" alt="{{ post.data.imageAlt }}" class="postlist-image">
+			{%- else -%}
+				{% set firstImage = post.content | getFirstImage({ url: post.url, attributes: "class='postlist-image'" }) %}
+				{% if firstImage %}
+					{{ firstImage | safe }}
+				{% else %}
+					<div class="postlist-image-placeholder"></div>
+				{% endif %}
 			{%- endif %}
 		</li>
 	{%- endfor %}

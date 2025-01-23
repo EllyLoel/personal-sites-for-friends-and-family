@@ -38,4 +38,20 @@ export default function (eleventyConfig) {
 	eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
 		return (tags || []).filter((tag) => ["all", "posts"].indexOf(tag) === -1);
 	});
+
+	// Add getFirstImage filter
+	eleventyConfig.addFilter("getFirstImage", function(content, options = {}) {
+		if (!content) return null;
+		const match = content.match(/(<img[^>]+src="[^"]+"[^>]*>)/);
+		if (!match) return null;
+		
+		let imgTag = match[1];
+		if (options.url) {
+			imgTag = imgTag.replace(/src="([^"]+)"/, (_, src) => `src="${options.url}${src}"`);
+		}
+		if (options.attributes) {
+			imgTag = imgTag.replace(/>$/, ` ${options.attributes}>`);
+		}
+		return imgTag;
+	});
 }

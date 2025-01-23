@@ -32,7 +32,7 @@ collections_config:
       default:
         path: .cloudcannon/schemas/post.md
         create:
-          path: '[relative_base_path]/{title|slugify}/{title|slugify}.md'
+          path: '[relative_base_path]/{title|slugify}/index.md'
         reorder_inputs: true
         hide_extra_inputs: false
         remove_empty_inputs: false

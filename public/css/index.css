@@ -231,19 +231,22 @@ footer a {
 .postlist {
 	list-style: none;
 	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+	gap: 2em;
 }
 .postlist-item {
 	display: grid;
 	grid-template-areas:
-		"link image"
-		"date image";
-	grid-template-columns: auto 1fr;
-	grid-template-rows: auto 1fr;
+		"link"
+		"date"
+		"image";
+	grid-template-columns: auto;
+	grid-template-rows: auto auto 1fr;
 	counter-increment: start-from -1;
-	margin-bottom: 2em;
 	font-size: 1.5em;
 	position: relative;
-	width: fit-content;
+	border-radius: 0.25em;
 }
 .postlist-item:is(:focus-within, :hover)::before {
 	content: "";
@@ -253,7 +256,20 @@ footer a {
 	right: -0.5em;
 	bottom: -0.5em;
 	left: -0.5em;
-	background: linear-gradient(to right, light-dark(var(--color-1), var(--color-13)), transparent 50%);
+	background: linear-gradient(to bottom, light-dark(var(--color-1), var(--color-13)), transparent 50%);
+}
+.postlist-item:is(:hover)::before {
+	border-radius: 0.5em;
+}
+@supports not selector(:has(a, b)) {
+	.postlist-item:is(:focus-within)::before {
+		border-radius: 1.5em;
+	}
+}
+@supports selector(:has(a, b)) {
+	.postlist-item:has(:focus-visible)::before {
+		border-radius: 1.5em;
+	}
 }
 .postlist-item:not(:focus-within) {
 	outline-offset: 0;
@@ -265,17 +281,6 @@ footer a {
 }
 .postlist-item:focus-within :focus-visible {
 	outline: none; /* usually you want `outline-color: transparent;` so the outlines get added back for forced colors users but in this case we've added another outline already so we don't need to.  */
-}
-.postlist-item > :is(img, picture) {
-	grid-area: image;
-	margin-left: 1rem;
-	--lh: 3;
-	max-height: calc(var(--lh) * 1.5em);
-	max-height: calc(var(--lh) * 1lh);
-}
-.postlist-image {
-	height: 100%;
-	width: auto;
 }
 .postlist-date {
 	font-size: 0.75em;
@@ -302,19 +307,27 @@ footer a {
 .postlist-item-active .postlist-link {
 	font-weight: bold;
 }
-@media (max-width: 28em) {
-	.postlist-item {
-		grid-template-areas:
-			"link"
-			"date"
-			"image";
-		grid-template-columns: auto;
-		grid-template-rows: auto auto auto;
-	}
-	.postlist-item > :is(img, picture) {
-		margin-left: 0;
-		margin-top: 1rem;
-	}
+.postlist-item > :is(img, picture, .postlist-image-placeholder) {
+	grid-area: image;
+	margin-top: 0.5em;
+	border-radius: 0.25em;
+	overflow: clip;
+}
+.postlist-image {
+}
+.postlist-image-placeholder {
+	--s: 1em; /* control the size*/
+	--c1: var(--color-1);
+	--c2: var(--color-2);
+	
+	--_g: var(--c1)        6.1%,var(--c2)  6.4% 18.6%,var(--c1) 18.9% 31.1%,
+				var(--c2) 31.4% 43.6%,var(--c1) 43.9% 56.1%,var(--c2) 56.4% 68.6%,#0000 68.9%;
+	background:
+		radial-gradient(var(--s) at 100% 0   ,var(--_g)),
+		radial-gradient(var(--s) at 0    0   ,var(--_g)),
+		radial-gradient(var(--s) at 0    100%,var(--_g)),
+		radial-gradient(var(--s) at 100% 100%,var(--_g)) var(--c1);
+	background-size: var(--s) var(--s);
 }
 
 /* Tags */
