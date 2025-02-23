@@ -45,9 +45,6 @@
 		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
 		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
 
-		{#- Add the heading-anchors web component to the JavaScript bundle #}
-		{%- js %}{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}{% endjs %}
-
 		<meta name="description" content="{{ description or metadata.description }}">
 		<link rel="icon" href="/img/icon.png" type="image/png">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
@@ -58,13 +55,15 @@
 
 		<header>
 			<a href="/" class="home-link">
-				<img src="/nervousghost-logo.webp" alt="">
-				{{ metadata.title }}
+				<picture>
+					<source media="(prefers-color-scheme: dark)" srcset="/nervousghost-logo-dark-mode.webp">
+					<source media="(prefers-color-scheme: light)" srcset="/nervousghost-logo-light-mode.webp">
+					<img eleventy:ignore src="/nervousghost-logo-light-mode.webp" alt="{{ metadata.title }}">
+				</picture>
 			</a>
 
 			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
 			<nav>
-				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
 					{%- for entry in collections.all | eleventyNavigation %}
 						<li class="nav-item">
@@ -76,9 +75,7 @@
 		</header>
 
 		<main id="skip">
-			<heading-anchors>
-				{{ content | safe }}
-			</heading-anchors>
+			{{ content | safe }}
 		</main>
 
 		<footer>

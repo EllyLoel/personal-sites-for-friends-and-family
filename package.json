@@ -43,8 +43,5 @@
 		"luxon": "^3.5.0",
 		"zod": "^3.23.8",
 		"zod-validation-error": "^3.3.1"
-	},
-	"dependencies": {
-		"@zachleat/heading-anchors": "^1.0.1"
 	}
 }

@@ -1,5 +1,25 @@
+@font-face {
+	font-family: "Darumadrop One";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/DarumadropOne.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: "Fredoka";
+	font-style: normal;
+	font-weight: 300 700;
+	font-stretch: 75% 125%;
+	font-display: swap;
+	src: url("/Fredoka.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
-	--font-family: system-ui, sans-serif;
+	--font-sans: "Fredoka", system-ui, sans-serif;
+	--font-serif: "Darumadrop One", serif;
 
 	--hue-red: 25;
 	--hue-pink: 350;
@@ -17,7 +37,7 @@
 	--brodie-black: oklch(22.05% 0.0036 345.6);
 	--brodie-white: oklch(98.3% 0.0195 87.51);
 
-	--brodie-red: oklch(63.77% 0.224 33.32); /* black */
+	--brodie-red: oklch(63.77% 0.224 33.32); /* black & cream */
 	--brodie-pink: oklch(82.16% 0.1153 353); /* black */
 	--brodie-yellow: oklch(84.21% 0.1716 85.7); /* black */
 	--brodie-green: oklch(56.49% 0.1292 158.2); /* black & cream */
@@ -82,7 +102,7 @@ html {
 	color-scheme: light dark;
 	background-color: var(--background-color);
 	color: var(--text-color);
-	font-family: var(--font-family);
+	font-family: var(--font-sans);
 }
 body {
 	margin: 0 auto;
@@ -98,6 +118,32 @@ body {
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
+}
+
+:is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6) {
+	font-family: var(--font-serif);
+	line-height: 1;
+	margin: 0;
+	margin-bottom: 0.5em;
+}
+:is(h1, .h1) {
+	font-size: 4rem;
+	text-align: center;
+}
+:is(h2, .h2) {
+	font-size: 3rem;
+}
+:is(h3, .h3) {
+	font-size: 2rem;
+}
+:is(h4, .h4) {
+	font-size: 1.75rem;
+}
+:is(h5, .h5) {
+	font-size: 1.5rem;
+}
+:is(h6, .h6) {
+	font-size: 1.25rem;
 }
 
 /* Fluid images via https://www.zachleat.com/web/fluid-images/ */
@@ -177,16 +223,17 @@ table th {
 
 /* Header */
 header {
-	display: flex;
+	/* display: flex;
 	gap: 1em 0.5em;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: center; */
 	padding: 1em;
 }
 .home-link {
-	font-size: 1em; /* 16px /16 */
+	font-size: 1em;
 	font-weight: 700;
-	margin-right: 2em;
+	margin: 0 auto;
+	width: fit-content;
 	display: flex;
 	gap: 0.5em;
 	align-items: center;
@@ -195,8 +242,8 @@ header {
 	text-decoration: none;
 }
 .home-link img {
-	max-block-size: 2em;
-	inline-size: auto;
+	max-width: 10em;
+	width: auto;
 }
 
 /* Nav */
@@ -245,14 +292,14 @@ footer a {
 }
 .postlist-date,
 .postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
+	font-size: 0.8125em;
 	color: var(--gray-14);
 }
 .postlist-date {
 	word-spacing: -0.5px;
 }
 .postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
+	font-size: 1.1875em;
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
 	padding-left: 0.25em;

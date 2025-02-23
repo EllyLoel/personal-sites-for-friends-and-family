@@ -5,16 +5,7 @@ eleventyNavigation:
 ---
 # About
 
-![Nervous Ghost sprinkling their magic over everything.](../uploads/nervousghost-logo.webp)
-
-{% css %}
-picture:has(img[alt="Nervous Ghost sprinkling their magic over everything."]) {
-  background: var(--background-color);
-  display: block;
-  border-radius: 1em;
-  padding: 0.5em 1em;
-}
-{% endcss %}
+## Who am I?
 
 Hey there! My name is Brodie, I am a queer, non-binary and neurodivergent artist operating in Naarm (Melbourne). I love all things creative! I would consider myself a jack of all trades and a master of some! I am particularly drawn to things that are cute and colourful but have a spooky, dark or sometimes comical twist – something you will see as a common theme within my art! Art has been something I have been working on since I was very young and expanding more seriously through my adolescence. As I discovered more about myself, my art really began to reflect the hard work and effort I had put into growing as a person and improving my skills.
 
