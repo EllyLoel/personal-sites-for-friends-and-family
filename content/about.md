@@ -9,7 +9,7 @@ eleventyNavigation:
 
 {% css %}
 picture:has(img[alt="Nervous Ghost sprinkling their magic over everything."]) {
-  background: var(--gray-0);
+  background: var(--background-color);
   display: block;
   border-radius: 1em;
   padding: 0.5em 1em;
