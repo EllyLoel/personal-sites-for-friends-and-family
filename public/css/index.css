@@ -91,6 +91,10 @@
 	box-sizing: border-box;
 }
 
+:focus-visible {
+	outline-offset: 2px;
+}
+
 @view-transition {
 	navigation: auto;
 }
@@ -119,9 +123,8 @@ body > a[href="#skip"] {
 	inset-inline-start: 0;
 	padding: 0.5em;
 	border-end-end-radius: 8px;
-	outline-offset: 2px;
-	background: var(--brodie-black);
-	color: var(--brodie-white);
+	background: var(--text-color);
+	color: var(--background-color);
 }
 body > :is(header, main, footer) {
 	padding-block: 1em;
@@ -406,8 +409,10 @@ table-of-contents [id="toc-heading"] {
 table-of-contents button {
 	font: inherit;
 	text-align: start;
-	padding: 0;
-	border: none;
+	padding: 8px;
+	padding-block-start: 2px;
+	border-radius: 8px;
+	border: 1px solid var(--brodie-yellow);
 	background: none;
 }
 table-of-contents button svg {
