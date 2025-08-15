@@ -1,11 +1,12 @@
 import {
-	IdAttributePlugin,
 	InputPathToUrlTransformPlugin,
 	HtmlBasePlugin,
 } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import pluginToc from "eleventy-plugin-toc";
+import markdownItAnchor from "markdown-it-anchor";
 
 import pluginFilters from "./_config/filters.js";
 
@@ -52,10 +53,10 @@ export default async function (eleventyConfig) {
 		outputPath: "/feed/feed.xml",
 		stylesheet: "pretty-atom-feed.xsl",
 		templateData: {
-			eleventyNavigation: {
-				key: "Feed",
-				order: 4,
-			},
+			// eleventyNavigation: {
+			// 	key: "Feed",
+			// 	order: 4,
+			// },
 		},
 		collection: {
 			name: "posts",
@@ -82,6 +83,10 @@ export default async function (eleventyConfig) {
 		// Output formats for each image.
 		formats: ["avif", "webp", "auto"],
 
+		sharpOptions: {
+			animated: true,
+		},
+
 		// widths: ["auto"],
 
 		defaultAttributes: {
@@ -91,14 +96,18 @@ export default async function (eleventyConfig) {
 		},
 	});
 
+	eleventyConfig.addPlugin(pluginToc, {
+		tags: ["h1", "h2", "h3", "h4", "h5", "h6"],
+		wrapper: "div",
+		wrapperClass: "",
+	});
+
+	eleventyConfig.amendLibrary("md", (mdLib) => {
+		mdLib.use(markdownItAnchor);
+	});
+
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
-
-	eleventyConfig.addPlugin(IdAttributePlugin, {
-		// by default we use Eleventy’s built-in `slugify` filter:
-		// slugify: eleventyConfig.getFilter("slugify"),
-		// selector: "h1,h2,h3,h4,h5,h6", // default
-	});
 
 	eleventyConfig.addShortcode("currentBuildDate", () => {
 		return new Date().toISOString();
@@ -109,7 +118,6 @@ export default async function (eleventyConfig) {
 	// If your passthrough copy gets heavy and cumbersome, add this line
 	// to emulate the file copy on the dev server. Learn more:
 	// https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
-
 	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 }
 
