@@ -414,6 +414,7 @@ table-of-contents button {
 	border-radius: 8px;
 	border: 1px solid var(--brodie-yellow);
 	background: none;
+	color: inherit;
 }
 table-of-contents button svg {
 	font-size: 0.6em;
