@@ -1,9 +1,6 @@
 ---
 title: Terms of Service
 layout: layouts/post-base.njk
-eleventyNavigation:
-  key: TOS
-  order: 6
 ---
 
 By purchasing your commission from the artist Nervous Ghost, you agree to all written obligations in the TOS (Terms of Service) between the commissioner (you) and the artist (Nervous Ghost) and all commercial licenses.
