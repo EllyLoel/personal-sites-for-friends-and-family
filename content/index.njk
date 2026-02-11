@@ -10,7 +10,7 @@ const numberOfLatestPostsToShow = 3;
 <h1>Nervous Ghost</h1>
 
 <img src="../public/img/construction-2.gif" eleventy:formats="webp" alt="This page will never be completed. Under construction. These words are sounded by a blocky pixel art drawing of an excavator." class="mi-auto">
-<img src="../public/img/construction.gif" alt="This web is still being woven. Please don't be surprised if it changes slightly from time to time…" class="mi-auto">
+<img src="../public/img/construction.gif" alt="This web is still being woven. Please don't be surprised if it changes slightly from time to time…" class="mi-auto" style="max-inline-size: min(398px, 100%)">
 
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
